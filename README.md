@@ -1,10 +1,11 @@
-# Angular QuickStart Source
-[![Build Status][travis-badge]][travis-badge-url]
+# Tour of Heroes to Mars - Baseline Red Academy Mars Project continued
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
+This repository holds the Angular 2 / TypeScript / ES6 baseline source 
+code for the Red Academy Mars Project  **in progress**.
 
-It's been extended with testing support so you can start writing tests immediately.
+You should try to follow the "Tour of Heroes" tutorial to start off your project
+
+This repo has  testing support so you can start writing tests immediately.
 
 **This is not the perfect arrangement for your application. It is not designed for production.
 It exists primarily to get you started quickly with learning and prototyping in Angular**
@@ -27,10 +28,10 @@ We recommend [nvm](https://github.com/creationix/nvm) for managing multiple vers
 
 ## Create a new project based on the QuickStart
 
-Clone this repo into new project folder (e.g., `my-proj`).
+Clone this repo into new project folder (e.g., `ra-base-mars-repo-v03.5`).
 ```bash
-git clone  https://github.com/angular/quickstart  my-proj
-cd my-proj
+git clone  https://github.com/eapostol/ra-base-mars-repo-v03.5  ra-base-mars-repo-v03.5
+cd ra-base-mars-repo-v03.5
 ```
 
 We have no intention of updating the source on `angular/quickstart`.
@@ -53,7 +54,8 @@ git commit -m "Initial commit"
 
 Create a *remote repository* for this project on the service of your choice.
 
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
+Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*)
+ where **<my-org>** is your github account, and push the *local repo* to the *remote*.
 ```bash
 git remote add origin <repo-address>
 git push -u origin master
@@ -149,6 +151,3 @@ A custom reporter (see `protractor.config.js`) generates a  `./_test-output/prot
 which is easier to read; this file is excluded from source control.
 
 Shut it down manually with Ctrl-C.
-
-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/angular/quickstart
