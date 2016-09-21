@@ -1,4 +1,4 @@
-# Tour of Heroes to Mars - Baseline Red Academy Mars Project continued
+# Tour of Heroes to Mars - Baseline Red Academy Mars Project continued 
 
 This repository holds the Angular 2 / TypeScript / ES6 baseline source 
 code for the Red Academy Mars Project  **in progress**.
