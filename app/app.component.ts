@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+// part 3: added Hero import
+// note that this could be used to create the Colonist class
+// and the Alien class
+import { Hero } from './hero';
+
+
 // TODO: rename to colonists. Then make one for Aliens
 // We can add additional properties here to match up with the
 // Mars Project right away (they won't be used...yet)
@@ -19,13 +25,15 @@ const HEROES: Hero[] = [
   { id: 20, name: 'Matt' }
 ];
 
-
+/* in part 1, we added this */
+/* in part 3, we removed this */
+/*
 export class Hero {
   id : number;
   name : string;
 
 }
-
+*/
 @Component({
   selector: 'my-app',
   template: `  
