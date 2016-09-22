@@ -129,8 +129,12 @@ export class AppComponent {
 
   getAliens(): void {
     console.log("test retrieving aliens");
-    this.alienService.getAliens().then((a:Aliens) => {console.log(a);this.aliens = <Aliens>a;});
-    // <Promise<Aliens>>(this.alienService.getAliens()).then( (aliens:Aliens) => this.aliens = aliens);
+
+    // this was to test locally
+    // this.alienService.getAliens().then((a:Aliens) => {console.log(a);this.aliens = <Aliens>a;});
+
+    // this is to test the remote service
+    this.alienService.getAliens().then( (a:Aliens) => {this.aliens = <Aliens>a; } );
   }
 
   onSelect(hero: Hero): void {
