@@ -17,7 +17,7 @@ import {HeroService} from "./hero.service";
 import {Alien} from "./models/Alien";
 // For extending the service lesson, get Alien data
 import {AlienService} from "./alien.service";
-import {Aliens} from "./models/Aliens";
+import {AlienHorde} from "./models/AlienHorde";
 
 
 @Component({
@@ -101,7 +101,7 @@ export class AppComponent {
   // pt 5. services
   heroes: Hero[];
   // Mars Project: add a sample "aliens" collection to test service
-  aliens: Aliens;
+  aliens: AlienHorde;
   selectedHero: Hero;
 
   ngOnInit(): void{
@@ -134,7 +134,7 @@ export class AppComponent {
     // this.alienService.getAliens().then((a:Aliens) => {console.log(a);this.aliens = <Aliens>a;});
 
     // this is to test the remote service
-    this.alienService.getAliens().then( (a:Aliens) => {this.aliens = <Aliens>a; } );
+    <Promise<AlienHorde>>(this.alienService.getAliens()).then( (a:AlienHorde) => {this.aliens = a; } );
   }
 
   onSelect(hero: Hero): void {

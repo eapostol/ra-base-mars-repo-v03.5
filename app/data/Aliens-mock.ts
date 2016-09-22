@@ -11,7 +11,7 @@ import { Alien } from '../models/Alien';
 
 // added import for Aliens model, since JSON returned is
 // an object with Aliens property
-import {Aliens} from "../models/Aliens";
+import {Aliens} from "../models/AlienHorde";
 
 export const ALIENS:Aliens =
 {

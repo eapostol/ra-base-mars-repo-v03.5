@@ -22,7 +22,7 @@ import { Alien } from './models/Alien';
 import { Http, Headers } from '@angular/http';
 
 // use this to confirm the structure of data returned
-import { Aliens } from './models/Aliens'
+import { Aliens } from './models/AlienHorde'
 
 
 
