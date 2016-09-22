@@ -7,7 +7,7 @@
 
   import { Alien } from './Alien'
 
-export class Aliens{
+export class AlienHorde{
   aliens: Alien[];
 
 }
