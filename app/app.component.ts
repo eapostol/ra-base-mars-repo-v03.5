@@ -3,31 +3,19 @@ import { Component } from '@angular/core';
 // part 3: added Hero import
 // note that this could be used to create the Colonist class
 // and the Alien class
-import { Hero } from './hero';
-
-
 // TODO: rename to colonists. Then make one for Aliens
 // We can add additional properties here to match up with the
 // Mars Project right away (they won't be used...yet)
-
 // const COLONISTS: Colonist
 // (also... const ALIENS: Alien)
 
 import { Hero } from './models/Hero';
-// TODO: take this HEROES constant and place in a separate file in
-// the appropriate folder
-const HEROES: Hero[] = [
-  { id: 11, name: 'Edward', age:20, occupationID:1 },
-  { id: 12, name: 'Marissa', age:20, occupationID:2 },
-  { id: 13, name: 'Dan', age:20, occupationID:3 },
-  { id: 14, name: 'Ala', age:20, occupationID:4 },
-  { id: 15, name: 'Brendon', age:20, occupationID:5 },
-  { id: 16, name: 'Matt', age:20, occupationID:1 },
-  { id: 17, name: 'Rachael', age:20, occupationID:2 },
-  { id: 18, name: 'Kelsie', age:20, occupationID:3 },
-  { id: 19, name: 'Sarah', age:20, occupationID:4 },
-  { id: 20, name: 'Cody', age:20, occupationID:5 }
-];
+
+// refactor Heroes constant out to its own file
+import { HEROES } from './data/Heroes'
+import {HeroService} from "./hero.service";
+
+
 @Component({
   selector: 'my-app',
   template: `<div style="border: groove">
@@ -91,12 +79,35 @@ const HEROES: Hero[] = [
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-  `]
+  `],
+  providers: [HeroService]
 })
 export class AppComponent {
   title = 'Tour of Heroes';
-  heroes = HEROES;
+  // heroes = HEROES;
+  // pt 5. services
+  heroes: Hero[];
   selectedHero: Hero;
+
+  ngOnInit(): void{
+    this.getHeroes();
+  }
+
+  // pt 5 toh add constructor
+  constructor(private heroService: HeroService){
+  }
+
+  getHeroes(): void{
+
+    // pt 5 toh - refactor this.heroes into their own method
+    // note how we cast the fat arrow function
+    // argument in parentheses, and cast the getHeroes() method
+    // call as <Promise<Hero[]>>
+
+    <Promise<Hero[]>>(this.heroService.getHeroes()).then( (heroes:Hero[]) => this.heroes = heroes);
+
+  }
+
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
