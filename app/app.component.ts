@@ -14,6 +14,10 @@ import { Hero } from './models/Hero';
 // refactor Heroes constant out to its own file
 import { HEROES } from './data/Heroes'
 import {HeroService} from "./hero.service";
+import {Alien} from "./models/Alien";
+// For extending the service lesson, get Alien data
+import {AlienService} from "./alien.service";
+import {Aliens} from "./models/Aliens";
 
 
 @Component({
@@ -29,6 +33,15 @@ import {HeroService} from "./hero.service";
       </li>
     </ul>
     <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+    </div>
+    <br>
+    <h2>Test Aliens</h2>
+    <div *ngIf="aliens" style="border: #ff4655 double">
+      <ul>
+        <li *ngFor="let alien of aliens.aliens">
+        {{alien.type}} - {{alien.description}}
+        </li>
+      </ul>
     </div>
   `,
   styles: [`
@@ -80,21 +93,27 @@ import {HeroService} from "./hero.service";
       border-radius: 4px 0 0 4px;
     }
   `],
-  providers: [HeroService]
+  providers: [HeroService,AlienService]
 })
 export class AppComponent {
   title = 'Tour of Heroes';
   // heroes = HEROES;
   // pt 5. services
   heroes: Hero[];
+  // Mars Project: add a sample "aliens" collection to test service
+  aliens: Aliens;
   selectedHero: Hero;
 
   ngOnInit(): void{
     this.getHeroes();
+    this.getAliens();
+
   }
 
   // pt 5 toh add constructor
-  constructor(private heroService: HeroService){
+  constructor(private heroService: HeroService,
+              private alienService: AlienService){
+    console.log("aliens = " + this.aliens);
   }
 
   getHeroes(): void{
@@ -106,6 +125,12 @@ export class AppComponent {
 
     <Promise<Hero[]>>(this.heroService.getHeroes()).then( (heroes:Hero[]) => this.heroes = heroes);
 
+  }
+
+  getAliens(): void {
+    console.log("test retrieving aliens");
+    this.alienService.getAliens().then((a:Aliens) => {console.log(a);this.aliens = <Aliens>a;});
+    // <Promise<Aliens>>(this.alienService.getAliens()).then( (aliens:Aliens) => this.aliens = aliens);
   }
 
   onSelect(hero: Hero): void {
