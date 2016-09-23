@@ -6,9 +6,9 @@ import { IJob } from '../interfaces/IJob'
 
 export class Job implements IJob{
   id:number;
-  jobTitle:string;
-  // jobDescription:string;
+  name:string;
+  description:string;
 }
-// because jobDescription is "optional" in the interface,
+// because description is "optional" in the interface,
 // I don't have to declare it in the class that uses it
-// but really what's the point of a contract if its not followed?s
+// but really what's the point of a contract if its not followed?

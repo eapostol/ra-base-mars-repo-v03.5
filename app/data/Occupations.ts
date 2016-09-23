@@ -4,9 +4,9 @@
 import { Job } from '../models/Job';
 
 export const OCCUPATIONS: Job[] = [
-  {id:1,jobTitle:"nerf herder"},
-  {id:2,jobTitle:"yoga teacher"},
-  {id:3,jobTitle:"student"},
-  {id:4,jobTitle:"football player"},
-  {id:5,jobTitle:"bounty hunter"}
+  {id:1,name:"nerf herder",description:""},
+  {id:2,name:"yoga teacher",description:""},
+  {id:3,name:"student",description:""},
+  {id:4,name:"football player",description:""},
+  {id:5,name:"bounty hunter",description:""}
 ];
