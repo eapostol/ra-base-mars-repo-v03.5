@@ -46,13 +46,20 @@ import { Colony } from './models/Colony'
       </ul>
     </div>
     <h2>Test Colonists</h2>
-    <div *ngIf="aliens" style="border: #ff4655 double">
+  <!-- note the example below, where I set up an ngFor loop with an index. that way, I can limit loop with an *ngIf 
+  statement -->
+    <div *ngIf="colonists" style="border: #00ff33 double">
       <ul>
-        <li *ngFor="let colonist of colonists.colonists">
-        {{colonist.name}} - {{colonist.job.description}}
+      <span *ngFor="let colonist of colonists.colonists; let i = index"> 
+       <span *ngIf="i<10">
+        <li>    
+        {{colonist.name}} - {{colonist.job.description}}       
         </li>
+         </span>
+        </span>
       </ul>
     </div>
+
   `,
   styles: [`
     .selected {
