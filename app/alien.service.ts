@@ -16,13 +16,13 @@ import { Alien } from './models/Alien';
 // first, we can 'test' with the local service
 
 // uncomment the lines below to test the local alien service
-// import { ALIENS } from './data/Aliens-mock'
+import { ALIENS } from './data/Aliens-mock'
 
 // then try to use the remote alien service
 import { Http, Headers } from '@angular/http';
 
 // use this to confirm the structure of data returned
-import { Aliens } from './models/AlienHorde'
+import { AlienHorde } from './models/AlienHorde'
 
 
 
@@ -54,15 +54,14 @@ export class AlienService {
    */
 
   // with
-  getAliens(): Promise<Aliens>{
+  getAliens(): Promise<AlienHorde>{
     console.log("invoking service");
     // first, test with the local service
     // console.log(ALIENS);
-    // return Promise.resolve(ALIENS);
+    return Promise.resolve(ALIENS);
 
     // now let's try remote
-     return this.http.get(this.aliensUrl).toPromise()
-       .then(response => response.json()).catch(this.handleError);
+    // return this.http.get(this.aliensUrl).toPromise().then(response => response.json()).catch(this.handleError);
   }
 
   // and add
