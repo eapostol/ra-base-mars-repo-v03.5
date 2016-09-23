@@ -11,9 +11,9 @@ import { Alien } from '../models/Alien';
 
 // added import for Aliens model, since JSON returned is
 // an object with Aliens property
-import {Aliens} from "../models/AlienHorde";
+import { AlienHorde } from "../models/AlienHorde";
 
-export const ALIENS:Aliens =
+export const ALIENS:AlienHorde =
 {
   "aliens": [
   {"type":"Ectomorph","submitted_by":"3","id":1,"description":"Long head, slimy."},
