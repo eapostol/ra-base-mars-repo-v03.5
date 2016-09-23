@@ -16,11 +16,11 @@ import { OCCUPATIONS } from './data/Occupations';
 
 /*
 const OCCUPATIONS: Job[] = [
-  {id:1,jobTitle:"nerf herder"},
-  {id:2,jobTitle:"yoga teacher"},
-  {id:3,jobTitle:"student"},
-  {id:4,jobTitle:"football player"},
-  {id:5,jobTitle:"bounty hunter"}
+  {id:1,name:"nerf herder"},
+  {id:2,name:"yoga teacher"},
+  {id:3,name:"student"},
+  {id:4,name:"football player"},
+  {id:5,name:"bounty hunter"}
 ];
 */
 
@@ -37,7 +37,7 @@ const OCCUPATIONS: Job[] = [
         <select style="width: 150px">
           <option *ngFor="let job of occupations" 
           [selected]="job.id===hero.occupationID">
-          {{job.jobTitle}}
+          {{job.name}}
           </option>
 
         </select>
