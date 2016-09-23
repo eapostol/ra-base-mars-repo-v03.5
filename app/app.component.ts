@@ -19,6 +19,8 @@ import {Alien} from "./models/Alien";
 import {AlienService} from "./alien.service";
 import {AlienHorde} from "./models/AlienHorde";
 
+import { ColonistService } from './colonist.service'
+import { Colony } from './models/Colony'
 
 @Component({
   selector: 'my-app',
@@ -40,6 +42,14 @@ import {AlienHorde} from "./models/AlienHorde";
       <ul>
         <li *ngFor="let alien of aliens.aliens">
         {{alien.type}} - {{alien.description}}
+        </li>
+      </ul>
+    </div>
+    <h2>Test Colonists</h2>
+    <div *ngIf="aliens" style="border: #ff4655 double">
+      <ul>
+        <li *ngFor="let colonist of colonists.colonists">
+        {{colonist.name}} - {{colonist.job.description}}
         </li>
       </ul>
     </div>
@@ -93,7 +103,7 @@ import {AlienHorde} from "./models/AlienHorde";
       border-radius: 4px 0 0 4px;
     }
   `],
-  providers: [HeroService,AlienService]
+  providers: [HeroService,AlienService,ColonistService]
 })
 export class AppComponent {
   title = 'Tour of Heroes';
@@ -102,29 +112,31 @@ export class AppComponent {
   heroes: Hero[];
   // Mars Project: add a sample "aliens" collection to test service
   aliens: AlienHorde;
+  // Mars Project: add a sample "colony" collection to test service
+  colonists: Colony;
+
   selectedHero: Hero;
 
   ngOnInit(): void{
     this.getHeroes();
     this.getAliens();
+    this.getColonists();
 
   }
 
   // pt 5 toh add constructor
   constructor(private heroService: HeroService,
-              private alienService: AlienService){
-    console.log("aliens = " + this.aliens);
-  }
+              private alienService: AlienService,
+              private colonistService: ColonistService){}
+
+
 
   getHeroes(): void{
-
     // pt 5 toh - refactor this.heroes into their own method
     // note how we cast the fat arrow function
     // argument in parentheses, and cast the getHeroes() method
     // call as <Promise<Hero[]>>
-
     <Promise<Hero[]>>(this.heroService.getHeroes()).then( (heroes:Hero[]) => this.heroes = heroes);
-
   }
 
   getAliens(): void {
@@ -134,7 +146,15 @@ export class AppComponent {
     // this.alienService.getAliens().then((a:Aliens) => {console.log(a);this.aliens = <Aliens>a;});
 
     // this is to test the remote service
-    <Promise<AlienHorde>>(this.alienService.getAliens()).then( (a:AlienHorde) => {this.aliens = a; } );
+    let aliensPromise:Promise<AlienHorde> = this.alienService.getAliens();
+    aliensPromise.then( (a:AlienHorde) => {this.aliens = a; } );
+  }
+
+  getColonists(): void {
+
+    let colonistsPromise:Promise<Colony> = this.colonistService.getColonists();
+    colonistsPromise.then( (c:Colony) => { (this.colonists) = c; console.log(this.colonists)}  );
+
   }
 
   onSelect(hero: Hero): void {
